@@ -15,9 +15,11 @@ int main(int argc, char *argv[]) {
   while(1) {
     if(pid>0 && (forks==-1 || i<forks)) {
       printf("forking %d\n", ++i);
+      fflush(stdout);
       pid = fork();
       if(pid < 0) {
         fprintf(stderr, "fork failed..\n");
+        fflush(stderr);
       }
     }
   }
